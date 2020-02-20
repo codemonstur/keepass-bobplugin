@@ -24,8 +24,8 @@ public enum BobPlugin {;
             throws InvalidCommandLine, InvalidInput {
         final CliKeepass arguments = newCliParser(CliKeepass::new).parse(args);
 
-        final Path archive = Paths.get(arguments.file);
-        if (!isRegularFile(archive)) throw new InvalidInput("Keepass archive " + archive.toAbsolutePath() + " does not exist.");
+        final Path archive = Paths.get(arguments.file).normalize().toAbsolutePath();
+        if (!isRegularFile(archive)) throw new InvalidInput("Keepass archive " + archive + " does not exist.");
 
         final String password = isNullOrEmpty(arguments.password) ? env.get("KEEPASS_MASTER_PASSWORD") : arguments.password;
         if (isNullOrEmpty(password)) throw new InvalidInput("Could not find a password to use for the keepass archive");
@@ -35,8 +35,8 @@ public enum BobPlugin {;
             .openDatabase(password);
 
         for (final var entry : database.getEntries()) {
-            System.out.println("Title: " + entry.getTitle() + ", Username: " + entry.getUsername() + ", Password: " + entry.getPassword());
-            env.put(entry.getUsername(), entry.getPassword());
+            final String name = arguments.uppercase ? entry.getUsername().toUpperCase() : entry.getUsername();
+            env.put(name, entry.getPassword());
         }
 
         return 0;

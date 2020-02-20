@@ -9,4 +9,7 @@ public class CliKeepass {
     @CliOption(name = 'p', longName = "password")
     public String password;
 
+    @CliOption(name = 'u', longName = "uppercase")
+    public boolean uppercase;
+
 }
