@@ -1,6 +1,6 @@
 name: keepass
 version: 0.1.0
-packaging: jar
+packaging: bob-plugin
 dependencies:
   - project: ../bobthebuildtool
     scope: provided
