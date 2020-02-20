@@ -1,0 +1,4 @@
+0.2.0
+
+- Added uppercase flag
+- Removed debug output
