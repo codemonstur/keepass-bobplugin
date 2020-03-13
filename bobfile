@@ -1,5 +1,6 @@
 name: keepass
 version: 0.2.1
+enablePreview: false
 packaging: bob-plugin
 dependencies:
   - project: ../bobthebuildtool
