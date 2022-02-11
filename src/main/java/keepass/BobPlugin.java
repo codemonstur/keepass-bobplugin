@@ -2,6 +2,7 @@ package keepass;
 
 import bobthebuildtool.pojos.buildfile.Project;
 import bobthebuildtool.pojos.error.InvalidInput;
+import bobthebuildtool.pojos.error.VersionTooOld;
 import de.slackspace.openkeepass.KeePassDatabase;
 import de.slackspace.openkeepass.domain.KeePassFile;
 import jcli.errors.InvalidCommandLine;
@@ -11,12 +12,14 @@ import java.nio.file.Paths;
 import java.util.Map;
 
 import static bobthebuildtool.services.Functions.isNullOrEmpty;
+import static bobthebuildtool.services.Update.requireBobVersion;
 import static java.nio.file.Files.isRegularFile;
 import static jcli.CliParserBuilder.newCliParser;
 
 public enum BobPlugin {;
 
-    public static void installPlugin(final Project project) {
+    public static void installPlugin(final Project project) throws VersionTooOld {
+        requireBobVersion("7");
         project.addCommand("keepass", "Loads variables from a keepass archive", BobPlugin::loadKeepassArchive);
     }
 
