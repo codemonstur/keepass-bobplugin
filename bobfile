@@ -1,7 +1,7 @@
 include https://raw.githubusercontent.com/codemonstur/bobfiles/master/foss-app-github
 
 name: keepass
-version: 3
+version: 4
 enablePreview: false
 packaging: bob-plugin
 dependencies:
