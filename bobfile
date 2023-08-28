@@ -8,4 +8,4 @@ dependencies:
   - project: ../bobthebuildtool
     scope: provided
   - repository: de.slackspace:openkeepass:0.8.2
-  - repository: org.linguafranca.pwdb:KeePassJava2:2.1.4
+  - repository: org.linguafranca.pwdb:KeePassJava2:2.2.1
